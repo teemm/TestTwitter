@@ -1,0 +1,22 @@
+#searchWrap{
+	position: relative;
+}
+#autocomplate{
+	position: absolute;
+	width: 100%;
+	top: 100%;
+	left: 0;
+	background: #f5f5f6;
+}
+#reg{
+	display: none;
+}
+.hidden{
+	display: none
+}
+.regg{
+	width: 245px;
+}
+.info{
+	margin-top: 50px;
+}
