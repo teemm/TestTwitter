@@ -4,12 +4,13 @@
 		</br>
     <?php if (($this->session->hidden) == ($info['hiddenEmail'])) : ?>
       <div class="browse">
-        <button type="button" class="btn btn-primary" onclick="document.getElementById('photo').click()">Upload Photo</button>
-        <input type="file" id="photo" style="display:none;">
-    </div>
-  <?php else :  ?>
-    <?php echo $this->session->hidden; ?>
-    <?php echo $info['hiddenEmail']; ?>
+        <form action="<?php echo base_url('/main/UploadPhoto'); ?>" method="POST" enctype="multipart/form-data">
+          <button type="button" class="btn btn-primary" onclick="document.getElementById('photo').click()">Upload Photo</button>
+          <input type="file" id="photo" name="imageName" style="display:none;">
+          </br>
+          <button>submit</button>
+        </form>
+      </div>
     <?php endif ?>
 		
 	</div>
@@ -38,7 +39,6 @@
          <td class="infoo"><?php echo $info['phone']; ?></td>
        </tr>
        </tbody></table>
-		<?php print_r($info) ?>
 			<p>
 				
 

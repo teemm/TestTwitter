@@ -9,6 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  		$this->db->where('password', sha1($this->input->post('password', TRUE)));
  		if ($this->db->count_all_results() > 0) {
  			$this->session->set_userdata('hidden', $this->input->post('hiddenEmail', TRUE));
+
  			$this->db->set('hiddenEmail', $this->input->post('hiddenEmail', TRUE));
  			$this->db->where('email' , $this->input->post('email', TRUE));
  			$this->db->update('users');
@@ -76,7 +77,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 		$skip = $this->uri->segment(4);
- 		$this->db->select('tweets.id, tweets.content, tweets.add_date, users.fname, users.lname, tweets.user_id');
+ 		$this->db->select('tweets.id, tweets.content,tweets.tweet_image_name, tweets.add_date, users.fname, users.lname, tweets.user_id');
  		$this->db->from('tweets');
  		$this->db->join('users', 'users.id = tweets.user_id' );
  		$this->db->order_by('id', 'desc');
@@ -89,12 +90,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  		}	
  	}
  	public function selectId($user_id){
-		$this->db->select('users.id, users.fname, users.phone, users.hiddenEmail, users.lname, users.gender, users.email, users.password, tweets.user_id');
+		$this->db->select('users.id, users.fname, users.image_name, users.phone, users.hiddenEmail, users.lname, users.gender, users.email, users.password, tweets.user_id');
 		$this->db->from('users');
 		$this->db->join('tweets', 'users.id = tweets.user_id');
+		// $this->db->join('users_images', 'user.id = users.id');
+
 		$this->db->where('tweets.user_id', $user_id);
 		$info = $this->db->get()->row_array();
 		return $info;
+	}
+	public function UploadPhoto($imageName){
+		$this->db->set('image_name', $imageName);
+		$this->db->insert('users_images');
+		redirect('main/info');
+	}
+	public function addPosts($TweetsUpload=''){
+		$content = htmlspecialchars($this->input->POST('content', TRUE));
+		$user_id = $this->myId();
+
+		$this->db->set('tweet_image_name', $TweetsUpload);
+		$this->db->set('content', $content);
+		$this->db->set('user_id', $user_id);
+		$this->db->insert('tweets');
+
+	}
+	public function myId(){
+		return $this->db->select('id')->where('hiddenEmail',$this->session->hidden)->get('users')->result_array()[0]['id'];
+
 	}
  }
  ?>

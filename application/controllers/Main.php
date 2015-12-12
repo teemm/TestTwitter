@@ -89,4 +89,84 @@ class Main extends CI_Controller {
 		$this->load->view('info',$data);
 		$this->load->view('include/footer');
 	}
+	public function UploadPhoto(){
+		if ( $_SERVER['REQUEST_METHOD'] != 'POST' && !empty($_POST) ){
+			redirect('/main/index');
+		}
+			$config['upload_path']          = './uploads/';
+	        $config['allowed_types']        = 'gif|jpg|png';
+	        $config['max_size']             = 2000;
+	        // $config['max_width']            = 1024;
+	        // $config['max_height']           = 768;
+
+			$this->load->library('upload', $config);
+			$imageName = '';
+
+			 if ( ! $this->upload->do_upload('imageName'))
+                {
+                        $error = array('error' => $this->upload->display_errors());
+
+                        // $this->load->view('upload_form', $error);
+                        print_r($error);
+                }
+                else
+                {
+                        $data = array('upload_data' => $this->upload->data());
+                        $imageName = $data['upload_data']['file_name'];
+                        // $this->load->view('upload_success', $data);
+                        print_r($data);
+                }
+                $this->load->model('model');
+				$data['model'] = $this->model->UploadPhoto($imageName);
+			
+		
+	}
+	public function addPosts(){
+		if (isset($_POST['TweetsUpload']) || isset($_POST['content']))  {
+
+			$this->load->library('form_validation');
+
+			$this->form_validation->set_rules('content', 'თვითის', 'max_length[140]');
+			
+
+			if ($this->form_validation->run() === FALSE) {
+				$this->session->set_flashdata('msg_error','error');
+				$this->site();
+			}else{
+			
+				$this->load->model('model');
+
+
+				$config['upload_path']          = './uploads/';
+		        $config['allowed_types']        = 'gif|jpg|png';
+		        $config['max_size']             = 2000;
+		        // $config['max_width']            = 1024;
+		        // $config['max_height']           = 768;
+
+				$this->load->library('upload', $config);
+				$TweetsUpload = '';
+
+				 if ( ! $this->upload->do_upload('TweetsUpload'))
+	                {
+	                        $error = array('error' => $this->upload->display_errors());
+
+	                        // $this->load->view('upload_form', $error);
+	                        print_r($error);
+	                }
+	                else
+	                {
+	                        $data = array('upload_data' => $this->upload->data());
+	                        $TweetsUpload = $data['upload_data']['file_name'];
+	                        // $this->load->view('upload_success', $data);
+	                        print_r($data);
+	                }
+				$this->load->model('model');
+				$data['model'] = $this->model->addPosts($TweetsUpload);
+				redirect('main/index');
+			}
+
+
+		}
+	}
+
 }

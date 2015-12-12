@@ -20,3 +20,12 @@
 .info{
 	margin-top: 50px;
 }
+.PostUpload{
+	position: absolute;
+	right: 554px;
+    top: -40px;
+}
+.TweetsImage{
+	width: 600px;
+	height: 400px;
+}
