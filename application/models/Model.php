@@ -83,21 +83,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  		$this->db->order_by('id', 'desc');
  		$this->db->limit($config['per_page'], $skip);
  		$query = $this->db->get()->result_array();
-
+ 		foreach ($query as $key => $value) {
+ 			$query[$key]['comments']=$this->coments($value['id']);
+ 		}
  		if ($this->db->count_all_results()>0) {
 	 	return $query;
  		}	
  	}
- 	public function coments(){
- 		 $this->db->select('id, content, user_id, add_date');
-	 	 $this->db->from('tweetcoments');
-	 	 // $this->db->join('tweets', 'tweets.id = tweetcoments.tweet_id');
-	 	 // $this->db->join('tweets', 'tweets.user_id = tweetcoments.user_id');
-	 	 // $this->db->where('tweetcoments.tweet_id', $tweet_id);
-	 	 // $this->db->where('tweetcoments.user_id', $user_id);
-
-		$coment = $this->db->get()->row_array();
-		return $coment;
+ 	public function coments($tweet_id){
+ 		 $this->db->select('tweets.id as tweetId, users.fname, users.lname, users.id as userId, tweetcoments.id as CommentId, tweetcoments.content, tweetcoments.user_id, tweetcoments.add_date');
+	 	 $this->db->join('tweets', 'tweets.id = tweetcoments.tweet_id');
+	 	 $this->db->join('users', 'users.id = tweetcoments.user_id');
+	 	 $this->db->where('tweetcoments.tweet_id', $tweet_id);
+		 $coment = $this->db->get('tweetcoments')->result_array();
+		 return $coment;
 
  	}
  	public function selectId($user_id){

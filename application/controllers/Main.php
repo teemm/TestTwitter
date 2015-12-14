@@ -14,6 +14,7 @@ class Main extends CI_Controller {
 		$this->lang->load('custom', $this->session->language);
 		$this->load->library('pagination');
 		$this->load->model('model');
+		// $data['coment'] = $this->model->coments();
 		$data['tweets'] = $this->model->postBar();
 
 		$this->load->view('include/header');
