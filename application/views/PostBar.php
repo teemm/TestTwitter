@@ -16,7 +16,7 @@
                 </div>
                
                 <div id="newTweets">
-
+                        <?php print_r($coment) ?>
 
                    <?php foreach ($tweets as $row) : ?>
                     <div class="media" data-id="">
@@ -31,7 +31,57 @@
                             </h4>
                             <small><?php echo $row['content']; ?></small></br></br>
                             <img class="TweetsImage img-thumbnail" src="<?php echo base_url('./uploads/' .$row['tweet_image_name']); ?>" alt="..." class="img-rounded"></br> 
-                            <small><?php echo 'Posted ' .$row['add_date']; ?></small> 
+                            
+                            <div class="TweetComent">
+                                <div>
+                                    <span><a href="#">like</a></span>
+                                    <span><a href="#">coment</a></span>
+                                    <span><small style="float:right;"><?php echo 'Posted ' .$row['add_date']; ?></small></span>
+                                </div>
+                                <div>
+                                    <form action="" method="POST">
+                                        <input type="text" placeholder="Write a Coment">
+                                        <button>Submit</button>
+                                    </form>
+                                </div>
+
+                                 <div>
+                                    <span><a href="<?php echo site_url('Main/info/' . $row['user_id']); ?>">
+                                        <img class="media-object" src="<?php echo base_url('./uploads/1.jpg'); ?>" alt="">
+                                    </a>
+                                    
+                                    </span>
+                                    <span class="coments">
+                                        <h4 class="media-heading">
+                                            <a href="<?php echo site_url('Main/info/' . $row['user_id']); ?>">
+                                            <label><?php echo $row['fname']; ?> <?php echo $row['lname']; ?> </label></a> &nbsp;&nbsp;&nbsp;&nbsp;
+                                            <span class="comentData"><small style="float:right;"><?php echo 'Comented At ' .$row['add_date']; ?></small></span>
+                                        </h4>
+                                    </span>
+                                    <span class="coment">coment hare</span>
+                                </div>
+                        
+
+                                 <div>
+                                    <span><a href="<?php echo site_url('Main/info/' . $row['user_id']); ?>">
+                                        <img class="media-object" src="<?php echo base_url('./uploads/1.jpg'); ?>" alt="">
+                                    </a>
+                                    
+                                    </span>
+                                    <span class="coments">
+                                        <h4 class="media-heading">
+                                            <a href="<?php echo site_url('Main/info/' . $row['user_id']); ?>">
+                                            <label><?php echo $row['fname']; ?> <?php echo $row['lname']; ?> </label></a> &nbsp;&nbsp;&nbsp;&nbsp;
+                                            <span class="comentData"><small style="float:right;"><?php echo 'Comented At ' .$row['add_date']; ?></small></span>
+                                        </h4>
+                                    </span>
+                                    <span class="coment">coment hare</span>
+
+                                </div>
+                                
+
+
+                            </div>
                         </div>
 
                     

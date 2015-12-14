@@ -29,3 +29,43 @@
 	width: 600px;
 	height: 400px;
 }
+.TweetComent{
+	width: 600px;
+	border: 1px solid gray;
+}
+.TweetComent > div > span {
+	margin-right: 25px;
+    padding-left: 5px;
+}
+.TweetComent > div > form > input {
+	margin-left: 5px;
+	width: 500px;
+    height: 35px;
+    font-size: 15px;
+    margin-top: 5px;
+}
+.TweetComent > div > form > button{
+	width: 85px;
+    height: 35px;
+} 
+.TweetComent > div > span > a {
+	display: inline-block;
+}
+.TweetComent > div > span > a > img {
+	height:42px;
+	width: 50px;
+	margin-left: 5px;
+	border-radius: 5px;
+	 margin-top: 15px;
+	 position: relative;
+} 
+.media-heading{
+	display: inline-block;
+}
+.coments{
+	margin-top: 13px;
+	position: absolute;
+}
+.comentData{
+	margin-top: 13px;
+}

@@ -86,8 +86,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
  		if ($this->db->count_all_results()>0) {
 	 	return $query;
-	 		
  		}	
+ 	}
+ 	public function coments(){
+ 		 $this->db->select('id, content, user_id, add_date');
+	 	 $this->db->from('tweetcoments');
+	 	 // $this->db->join('tweets', 'tweets.id = tweetcoments.tweet_id');
+	 	 // $this->db->join('tweets', 'tweets.user_id = tweetcoments.user_id');
+	 	 // $this->db->where('tweetcoments.tweet_id', $tweet_id);
+	 	 // $this->db->where('tweetcoments.user_id', $user_id);
+
+		$coment = $this->db->get()->row_array();
+		return $coment;
+
  	}
  	public function selectId($user_id){
 		$this->db->select('users.id, users.fname, users.image_name, users.phone, users.hiddenEmail, users.lname, users.gender, users.email, users.password, tweets.user_id');

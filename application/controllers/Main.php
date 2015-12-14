@@ -89,6 +89,11 @@ class Main extends CI_Controller {
 		$this->load->view('info',$data);
 		$this->load->view('include/footer');
 	}
+	public function coments(){
+ 		$this->load->model('model');
+		$data['coment'] = $this->model->coments();
+		$this->load->view('postBar', $data);
+ 	}
 	public function UploadPhoto(){
 		if ( $_SERVER['REQUEST_METHOD'] != 'POST' && !empty($_POST) ){
 			redirect('/main/index');
@@ -164,9 +169,8 @@ class Main extends CI_Controller {
 				$data['model'] = $this->model->addPosts($TweetsUpload);
 				redirect('main/index');
 			}
-
-
 		}
 	}
+	
 
 }
