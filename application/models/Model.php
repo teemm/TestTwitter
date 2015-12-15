@@ -16,6 +16,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  		}
 
  	}
+ 	public function addComent(){
+		$coment = htmlspecialchars($this->input->POST('coment', TRUE));
+		$user_id = $this->myId();
+		$tweet_id = htmlspecialchars($this->input->post('hiddenComent', TRUE));
+
+		$this->db->set('user_id', $user_id);
+		$this->db->set('content', $coment);
+		$this->db->set('tweet_id', $tweet_id);
+		$this->db->insert('tweetcoments');
+
+ 	}
  	public function reg(){
 			$email = htmlspecialchars($this->input->POST('email', TRUE));
 			$phone = htmlspecialchars($this->input->POST('phone', TRUE));
@@ -50,6 +61,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  			return $query;
  		}
  	}
+ 	// public function edit_postbar($id){
+ 		
+ 	// }
  	public function postBar(){
  		$config['base_url'] = 'http://localhost/twitter/main/site/postbar';
 		$config['total_rows'] = $this->db->count_all_results('tweets');

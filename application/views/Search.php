@@ -1,3 +1,4 @@
+<div class="col-md-4">
 <div id="searchWrap" class="well">
                     <h4><?php echo $this->lang->line('search'); ?></h4>
                     <div class="input-group">
@@ -12,4 +13,5 @@
                             
                         </ul>
                     <!-- /.input-group -->
+                </div>
                 </div>

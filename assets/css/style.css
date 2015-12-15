@@ -22,16 +22,18 @@
 }
 .PostUpload{
 	position: absolute;
-	right: 554px;
+	right: 435px;
     top: -40px;
 }
 .TweetsImage{
-	width: 600px;
-	height: 400px;
+	width: 80%;
+	margin: 0px 0px 30px 30px;
 }
 .TweetComent{
-	width: 600px;
-	border: 1px solid gray;
+	width: 100%;
+	background: #F9F9F9;
+	border-top: 1px solid #EDEDED;
+	padding: 30px;
 }
 .TweetComent > div > span {
 	margin-right: 25px;
@@ -39,7 +41,6 @@
 }
 .TweetComent > div > form > input {
 	margin-left: 5px;
-	width: 500px;
     height: 35px;
     font-size: 15px;
     margin-top: 5px;
@@ -68,4 +69,146 @@
 }
 .comentData{
 	margin-top: 13px;
+}
+.borderTweet{
+	border-bottom: 1px solid #ccc;
+	background: #fff;
+	border-radius: 5px;
+	padding-top: 30px;
+}
+.media-object {
+	background: url(http://wda-nederland.nl/wp-content/uploads/2015/06/No-avatar.png) no-repeat center center / cover;
+	padding: 30px;
+	border-radius: 3px;
+	margin-left: 30px;
+}
+.posted_date {
+	font: 12px 'arial';
+	color: #AAAAAA;
+}
+.posted_by {
+	font: 17px 'arial';
+	font-weight: bold;
+}
+
+
+
+
+.comment {
+    overflow: hidden;
+    padding: 0 0 1em;
+    border-bottom: 1px solid #ddd;
+    margin: 18px 0 1em;
+    zoom: 1;
+}
+
+.comment-img {
+    float: left;
+    margin-right: 33px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.comment-img img {
+    display: block;
+}
+
+.comment-body {
+    overflow: hidden;
+}
+
+.comment .text {
+    padding: 10px;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    background: #fff;
+}
+
+.comment .text p:last-child {
+    margin: 0;
+}
+
+.comment .attribution {
+    margin: 0.5em 0 0;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Decoration */
+
+.comments,
+.comment {
+    position: relative;
+}
+
+.comments:before,
+.comment:before,
+.comment .text:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 65px;
+}
+
+.comments:before {
+    width: 3px;
+    top: -20px;
+    bottom: -20px;
+    background: rgba(0,0,0,0.1);
+}
+
+.comment:before {
+    width: 9px;
+    height: 9px;
+    border: 3px solid #fff;
+    border-radius: 100px;
+    margin: 16px 0 0 -6px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.2), inset 0 1px 1px rgba(0,0,0,0.1);
+    background: #ccc;
+}
+
+.comment:hover:before {
+    background: orange;
+}
+
+.comment .text:before {
+    top: 18px;
+    left: 78px;
+    width: 9px;
+    height: 9px;
+    border-width: 0 0 1px 1px;
+    border-style: solid;
+    border-color: #e5e5e5;
+    background: #fff;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+}​
+.well {
+	padding: 100px;
+}
+.likeshare a {
+	display: block;
+	background: #F9F9F9;
+	border: 1px solid #EDEDED;
+	padding: 10px;
+	border-radius: 5px;
+	float: left;
+	margin-right: 20px;
+	color: #A8A8A8;
+}
+.likeshare a:hover {
+	color: #337ab7;
+}
+.likeshare {
+	width: 100%;
+	overflow: hidden;
+	padding: 0 0 20px 30px;
+}
+.comminput {
+	width: 595px;
+	border: none;
+	border: 1px solid #EDEDED;
+	padding: 10px;
 }

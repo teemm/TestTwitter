@@ -56,6 +56,9 @@ class Main extends CI_Controller {
 		}
 		
 	}
+	// public function edit_postbar(){
+		
+	// }
 	public function login(){
 		$this->load->view('include/header');
 		$this->load->view('login');
@@ -69,7 +72,7 @@ class Main extends CI_Controller {
 	}
 	public function logOut(){
 		$this->session->unset_userdata('hidden');
-			redirect(base_url());
+		redirect(base_url());
 		
 	}
 	public function navbar(){
@@ -94,6 +97,16 @@ class Main extends CI_Controller {
  		$this->load->model('model');
 		$data['coment'] = $this->model->coments();
 		$this->load->view('postBar', $data);
+ 	}
+ 	public function insertComent(){
+ 		if (isset($_POST['coment'])){
+
+			$this->load->library('form_validation');
+			$this->form_validation->set_rules('content', 'კომენტარის', 'required');
+			$this->load->model('model');
+			$data['model'] = $this->model->addComent();
+			redirect('main/index');
+		}
  	}
 	public function UploadPhoto(){
 		if ( $_SERVER['REQUEST_METHOD'] != 'POST' && !empty($_POST) ){
@@ -128,6 +141,7 @@ class Main extends CI_Controller {
 		
 	}
 	public function addPosts(){
+
 		if (isset($_POST['TweetsUpload']) || isset($_POST['content']))  {
 
 			$this->load->library('form_validation');
