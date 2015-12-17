@@ -212,3 +212,24 @@
 	border: 1px solid #EDEDED;
 	padding: 10px;
 }
+
+.serchwrap{
+	position: absolute;
+    left: 15px;
+    top: 50px;
+    list-style: none;
+    padding: 0;
+}
+.form-control{
+	position: relative;
+}
+.seachimg{
+	margin: 3px;
+    padding: 23px;
+}
+.navbar-inverse{
+	background: #286090;
+}
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover{
+	background: #24445F;
+}

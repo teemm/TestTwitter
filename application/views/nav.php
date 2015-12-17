@@ -13,18 +13,27 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="<?php echo base_url('/main/index/'); ?>">Main</a>
+                        <a href="<?php echo site_url('/main/site/');?>">Main</a>
                     </li>
-				
                 </ul>
                   <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <form id="logout" action="" method="POST">
-                        <a href="<?php echo site_url('/main/setLanguage/english'); ?>">english</a>
-                        <a href="<?php echo site_url('/main/setLanguage/georgian'); ?>">ქართული</a>
-                        <a href=" <?php echo  base_url('/Main/logOut'); ?> "><span class="glyphicon glyphicon-log-in"></span>LogOut</a>
-                        </form>
-                    </li>
+                <li>
+                    <a href="<?php echo site_url('/main/setLanguage/english'); ?>"><img style="with:20px; height:20px;" src="<?php echo base_url('./uploads/english.png'); ?> "></a>
+                </li>
+                <li>
+                    <a href="<?php echo site_url('/main/setLanguage/georgian'); ?>"><img style="with:20px; height:20px;"src="<?php echo base_url('./uploads/georgia.png'); ?> "></a>
+                </li>
+
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img class="img-circle" src="<?php echo base_url('./uploads/1.jpg'); ?>" alt="" width="30" height="20"></a>
+                  <ul class="dropdown-menu">
+                 
+                    <li><a href="<?php echo site_url('Main/settings');?>"><i class="fa fa-cog"></i> Settings </a></li>
+                    <li><a href="<?php echo site_url('/Main/logOut'); ?>"><i class="fa fa-sign-out"></i> Log Out </a></li>
+                   
+                  </ul>
+                </li>
+
                   </ul>
             </div>
             <!-- /.navbar-collapse -->

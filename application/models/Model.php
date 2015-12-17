@@ -104,6 +104,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	 	return $query;
  		}	
  	}
+ 	public function search(){
+ 		$this->db->select('fname');
+ 		$this->db->like('fname', $arg);
+ 		return  $row = $this->db->get('users')->result_array();
+ 	}
  	public function coments($tweet_id){
  		 $this->db->select('tweets.id as tweetId, users.fname, users.lname, users.id as userId, tweetcoments.id as CommentId, tweetcoments.content, tweetcoments.user_id, tweetcoments.add_date');
 	 	 $this->db->join('tweets', 'tweets.id = tweetcoments.tweet_id');
@@ -114,10 +119,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
  	}
  	public function selectId($user_id){
-		$this->db->select('users.id, users.fname, users.image_name, users.phone, users.hiddenEmail, users.lname, users.gender, users.email, users.password, tweets.user_id');
+		$this->db->select('users.id, users.fname, profile_pic.image, users.image_name, users.phone, users.hiddenEmail, users.lname, users.gender, users.email, users.password, tweets.user_id');
 		$this->db->from('users');
 		$this->db->join('tweets', 'users.id = tweets.user_id');
-		// $this->db->join('users_images', 'user.id = users.id');
+		$this->db->join('profile_pic', 'users.image_name = profile_pic.image');
 
 		$this->db->where('tweets.user_id', $user_id);
 		$info = $this->db->get()->row_array();
@@ -128,6 +133,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		$this->db->insert('users_images');
 		redirect('main/info');
 	}
+	// public function ProfileImages(){
+	// 	$this->db->select('profile_pic.user_id, profile_pic.image, profile_pic.id, users.id');
+	// 	// $this->db->where('user_id', $user_id);
+	// 	$this->db->join('users', 'users.id = profile_pic.user_id');
+	// 	$this->db->order_by('user_id', 'desc');
+	// 	$pics = $this->db->get('profile_pic')->row_array();
+	// 	return $pics;
+	// }
 	public function addPosts($TweetsUpload=''){
 		$content = htmlspecialchars($this->input->POST('content', TRUE));
 		$user_id = $this->myId();

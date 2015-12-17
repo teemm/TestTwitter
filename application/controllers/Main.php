@@ -91,7 +91,22 @@ class Main extends CI_Controller {
 		$this->load->model('model') ;
 		$data['info'] = $this->model->selectId($id);
 		$this->load->view('info',$data);
+		// $this->load->view('nav',$data);
+
+		// $this->ProfileImages;
 		$this->load->view('include/footer');
+		print_r($data['info']);
+	}
+	// public function ProfileImages(){
+	// 	$this->load->model('model');
+	// 	$data['profile_image_name'] = $this->model->ProfileImages();
+	// 	$this->load->view('info', $data);
+	// 	print_r($data['profile_image_name']);
+	// }
+	public function search(){
+		$arg = $this->input->get('coment');
+		$this->load->model('model');
+		echo (json_encode($this->model->search($arg)));
 	}
 	public function coments(){
  		$this->load->model('model');
@@ -182,7 +197,7 @@ class Main extends CI_Controller {
 	                }
 				$this->load->model('model');
 				$data['model'] = $this->model->addPosts($TweetsUpload);
-				redirect('main/index');
+				redirect('main/site');
 			}
 		}
 	}

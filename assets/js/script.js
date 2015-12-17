@@ -13,6 +13,17 @@ $(document).ready(function(){
 	});
 });
 
+$('#searchIn').on('keyup', function(){
+	_html = "";
+	$.get('<?php echo base_url("Main/coment"); ?>',{ arg : $(this).val() }, function(resp){
+		for (var i = 0; i < resp.length; i++) {
+			_html += '<li>' + resp[i].content + '</li>'
+		}
+		$('#uels').html(_html);
+		console.log(_html);
+	},'json');
+});
+
 
 // function edit(thiss, content, id){
 // 	edit = '<form id="addTweetForm" action="<?php echo base_url();?>" method="POST" enctype="multipart/form-data">' +

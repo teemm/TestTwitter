@@ -1,3 +1,4 @@
+
 <div class="col-md-6">
 	<div class="info">
 		<img src="<?php echo base_url('./uploads/1.jpg'); ?>" alt="..." class="img-thumbnail"\>
@@ -15,6 +16,7 @@
 		
 	</div>
 </div>
+<?php print_r($info); ?>
 <div class="col-md-6">
 	<div class="info">
 	<table class="table">
