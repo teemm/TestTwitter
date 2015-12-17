@@ -29,7 +29,7 @@
                    
                   $.get("<?php echo base_url('main/Search') ?>" ,{ Search : $(this).val() }, function(resp){
                         for (var i = 0; i < resp.length; i++) {
-                        _html += '<li><a>' + resp[i].fname + ' ' + resp[i].lname + '</a></li>'
+                        _html += '<li class="searchres"><a>' + resp[i].fname + ' ' + resp[i].lname + '</a></li>'
                     }
                         $('#autocomplate').html(_html);
                     },'json');

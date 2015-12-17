@@ -32,6 +32,20 @@
                             </h4></br>
 
 
+                            <div class="settingsPosts">
+                                <li class="dropdown">
+                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img class="img-circle" src="<?php echo base_url('./uploads/1.jpg'); ?>" alt="" width="30" height="20"></a>
+                                  <ul class="dropdown-menu">
+                                 
+                                    <li><a href="<?php echo site_url('Main/settings');?>"><i class="fa fa-cog"></i> Edit </a></li>
+                                    <li><a href="<?php echo site_url('/Main/logOut'); ?>"><i class="fa fa-sign-out"></i> Delete </a></li>
+                                   
+                                  </ul>
+                                </li>
+                            </div>
+
+
+
                             <small><?php echo $row['content']; ?></small></br></br>
                             <img class="TweetsImage img-thumbnail" src="<?php echo base_url('./uploads/' .$row['tweet_image_name']); ?>" alt="..." class="img-rounded"></br> 
                             
@@ -69,6 +83,7 @@
                                 </article>
                                 <?php endforeach; ?>
                             </section>​
+                           
                                 
 
 

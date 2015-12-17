@@ -233,3 +233,10 @@
 .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover{
 	background: #24445F;
 }
+.searchres{
+	cursor: pointer;
+	list-style-type: none;
+}
+.settingsPosts{
+	position: absolute;
+}
