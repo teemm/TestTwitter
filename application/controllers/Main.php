@@ -16,7 +16,7 @@ class Main extends CI_Controller {
 		$this->load->model('model');
 		// $data['coment'] = $this->model->coments();
 		$data['tweets'] = $this->model->postBar();
-
+		$data['myinfo'] = $this->model->myId();
 		$this->load->view('include/header');
 		$this->load->view('index', $data);
 		$this->navbar();
@@ -91,11 +91,14 @@ class Main extends CI_Controller {
 		$this->load->model('model') ;
 		$data['info'] = $this->model->selectId($id);
 		$this->load->view('info',$data);
-		// $this->load->view('nav',$data);
 
-		// $this->ProfileImages;
 		$this->load->view('include/footer');
-		print_r($data['info']);
+		// print_r($data['info']);
+	}
+	public function delete($id){
+		$this->load->model('model');
+		$this->model->delete($id);
+		redirect('');
 	}
 	// public function ProfileImages(){
 	// 	$this->load->model('model');
@@ -173,7 +176,7 @@ class Main extends CI_Controller {
 
 
 				$config['upload_path']          = './uploads/';
-		        $config['allowed_types']        = 'gif|jpg|png';
+		        $config['allowed_types']        = 'gif|jpg|png|jpeg';
 		        $config['max_size']             = 2000;
 		        // $config['max_width']            = 1024;
 		        // $config['max_height']           = 768;
@@ -186,14 +189,14 @@ class Main extends CI_Controller {
 	                        $error = array('error' => $this->upload->display_errors());
 
 	                        // $this->load->view('upload_form', $error);
-	                        print_r($error);
+	                        // print_r($error);
 	                }
 	                else
 	                {
 	                        $data = array('upload_data' => $this->upload->data());
 	                        $TweetsUpload = $data['upload_data']['file_name'];
 	                        // $this->load->view('upload_success', $data);
-	                        print_r($data);
+	                        // print_r($data);
 	                }
 				$this->load->model('model');
 				$data['model'] = $this->model->addPosts($TweetsUpload);

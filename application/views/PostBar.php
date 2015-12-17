@@ -30,21 +30,23 @@
 
                             <label class="posted_date"><?php echo 'Posted ' .$row['add_date']; ?></label>
                             </h4></br>
+                            <?php if ($row['user_id'] == $myinfo):?>
 
 
-                            <div class="settingsPosts">
-                                <li class="dropdown">
-                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img class="img-circle" src="<?php echo base_url('./uploads/1.jpg'); ?>" alt="" width="30" height="20"></a>
-                                  <ul class="dropdown-menu">
-                                 
-                                    <li><a href="<?php echo site_url('Main/settings');?>"><i class="fa fa-cog"></i> Edit </a></li>
-                                    <li><a href="<?php echo site_url('/Main/logOut'); ?>"><i class="fa fa-sign-out"></i> Delete </a></li>
-                                   
-                                  </ul>
-                                </li>
-                            </div>
+  
+                                <div class="settingsPosts">
+                                    <li class="dropdown">
+                                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog"></i></a>
+                                      <ul class="dropdown-menu">
+                                     
+                                        <li><a href="<?php echo site_url('/Main/settings');?>"><i class="fa fa-cog"></i> Edit </a></li>
+                                        <li><a href="<?php echo site_url('/Main/delete/' .$row['id']); ?>"><i class="fa fa-sign-out"></i> Delete </a></li>
+                                       
+                                      </ul>
+                                    </li>
+                                </div>
 
-
+                            <?php endif ?>
 
                             <small><?php echo $row['content']; ?></small></br></br>
                             <img class="TweetsImage img-thumbnail" src="<?php echo base_url('./uploads/' .$row['tweet_image_name']); ?>" alt="..." class="img-rounded"></br> 
@@ -69,7 +71,6 @@
 
                             <section class="comments">
                                 <?php foreach ($row['comments'] as $comment):?>
-
                                   <article class="comment">
                                   <a class="comment-img" href="<?php echo site_url('Main/info/' . $row['user_id']); ?>">
                                     <img src="<?php echo base_url('./uploads/1.jpg'); ?>" alt="" width="50" height="50">

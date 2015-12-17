@@ -16,7 +16,6 @@
 		
 	</div>
 </div>
-<?php print_r($info); ?>
 <div class="col-md-6">
 	<div class="info">
 	<table class="table">

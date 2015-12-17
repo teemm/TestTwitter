@@ -239,4 +239,13 @@
 }
 .settingsPosts{
 	position: absolute;
+	right: 25px;
+	top: 35px;
+}
+.media{
+	position: relative;
+	overflow: visible;
+}
+li{
+	list-style: none;
 }

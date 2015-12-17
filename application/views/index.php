@@ -10,7 +10,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
             <!-- Blog Post Content Column -->
-                <?php $this->load->view('PostBar', $tweets); ?>
+
+                <?php 
+                	$data['tweets']=$tweets;
+                	$data['myinfo']=$myinfo;
+                	$this->load->view('PostBar', $data); ?>
             <!-- Blog Sidebar Widgets Column -->
 
                 <!-- Blog Search Well -->

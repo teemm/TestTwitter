@@ -91,7 +91,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 		$skip = $this->uri->segment(4);
- 		$this->db->select('tweets.id, tweets.content,tweets.tweet_image_name, tweets.add_date, users.fname, users.lname, tweets.user_id');
+ 		$this->db->select('tweets.id, tweets.content, tweets.tweet_image_name, users.hiddenEmail, tweets.add_date, users.fname, users.lname, tweets.user_id');
  		$this->db->from('tweets');
  		$this->db->join('users', 'users.id = tweets.user_id' );
  		$this->db->order_by('id', 'desc');
@@ -104,13 +104,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	 	return $query;
  		}	
  	}
+ 	public function delete($id){
+ 		$this->db->where('id',$id);
+ 		$this->db->delete('tweets');
+
+ 		$this->db->where('tweet_id',$id);
+ 		$this->db->delete('tweetcoments');
+ 	}
  	public function Search($arg){
  		$this->db->select('fname, lname');
  		$this->db->like('fname', $arg);
  		return  $row = $this->db->get('users')->result_array();
  	}
  	public function coments($tweet_id){
- 		 $this->db->select('tweets.id as tweetId, users.fname, users.lname, users.id as userId, tweetcoments.id as CommentId, tweetcoments.content, tweetcoments.user_id, tweetcoments.add_date');
+ 		 $this->db->select('tweets.id as tweetId, users.hiddenEmail, users.fname, users.lname, users.id as userId, tweetcoments.id as CommentId, tweetcoments.content, tweetcoments.user_id, tweetcoments.add_date');
 	 	 $this->db->join('tweets', 'tweets.id = tweetcoments.tweet_id');
 	 	 $this->db->join('users', 'users.id = tweetcoments.user_id');
 	 	 $this->db->where('tweetcoments.tweet_id', $tweet_id);
@@ -119,10 +126,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
  	}
  	public function selectId($user_id){
-		$this->db->select('users.id, users.fname, profile_pic.image, users.image_name, users.phone, users.hiddenEmail, users.lname, users.gender, users.email, users.password, tweets.user_id');
+		$this->db->select('users.id, users.fname, users.image_name, users.phone, users.hiddenEmail, users.lname, users.gender, users.email, users.password, tweets.user_id');
 		$this->db->from('users');
 		$this->db->join('tweets', 'users.id = tweets.user_id');
-		$this->db->join('profile_pic', 'users.image_name = profile_pic.image');
+		// $this->db->join('profile_pic', 'users.image_name = profile_pic.image');
 
 		$this->db->where('tweets.user_id', $user_id);
 		$info = $this->db->get()->row_array();
@@ -153,7 +160,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	}
 	public function myId(){
 		return $this->db->select('id')->where('hiddenEmail',$this->session->hidden)->get('users')->result_array()[0]['id'];
-
 	}
  }
  ?>
