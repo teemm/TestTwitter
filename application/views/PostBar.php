@@ -25,11 +25,11 @@
                             <h4 class="media-heading">
 
                             <a href="<?php echo site_url('Main/info/' . $row['user_id']); ?>">
-                            <label class="posted_by"><?php echo $row['fname']; ?> <?php echo $row['lname']; ?> </label></a></br> 
+                            <label class="posted_by"><?php echo $row['fname']; ?> <?php echo $row['lname']; ?> </label></a>
                                 
 
                             <label class="posted_date"><?php echo 'Posted ' .$row['add_date']; ?></label>
-                            </h4>
+                            </h4></br>
 
 
                             <small><?php echo $row['content']; ?></small></br></br>
