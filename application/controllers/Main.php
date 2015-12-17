@@ -103,17 +103,17 @@ class Main extends CI_Controller {
 	// 	$this->load->view('info', $data);
 	// 	print_r($data['profile_image_name']);
 	// }
-	public function search(){
-		$arg = $this->input->get('coment');
+	public function Search(){
+		$arg = $this->input->get('arg');
 		$this->load->model('model');
-		echo (json_encode($this->model->search($arg)));
+		echo (json_encode($this->model->Search($arg)));
 	}
 	public function coments(){
  		$this->load->model('model');
 		$data['coment'] = $this->model->coments();
 		$this->load->view('postBar', $data);
  	}
- 	public function insertComent(){
+ 	public function insertComent(){ 
  		if (isset($_POST['coment'])){
 
 			$this->load->library('form_validation');

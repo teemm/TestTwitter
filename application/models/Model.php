@@ -104,8 +104,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	 	return $query;
  		}	
  	}
- 	public function search(){
- 		$this->db->select('fname');
+ 	public function Search($arg){
+ 		$this->db->select('fname, lname');
  		$this->db->like('fname', $arg);
  		return  $row = $this->db->get('users')->result_array();
  	}

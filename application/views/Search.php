@@ -11,7 +11,7 @@
                         <ul class="serchwrap" id="uels" style="display:none">
 
                             <li>
-                            <a href="">temuri pkhaladze<span class="media-object seachimg" style="background:url(<?php echo base_url('./uploads/1.jpg'); ?>) no-repeat center center /cover;" alt=""></span></a>
+                           
                             </li>
 
 
@@ -23,3 +23,16 @@
                     <!-- /.input-group -->
                 </div>
                 </div>
+                <script type="text/javascript">
+              $('#searchIn').on('click', function(){
+                    _html = "";
+                   
+                  $.get("<?php echo base_url('main/Search') ?>" ,{ Search : $(this).val() }, function(resp){
+                        for (var i = 0; i < resp.length; i++) {
+                        _html += '<li><a>' + resp[i].fname + ' ' + resp[i].lname + '</a></li>'
+                    }
+                        $('#autocomplate').html(_html);
+                    },'json');
+                });
+
+                </script>
